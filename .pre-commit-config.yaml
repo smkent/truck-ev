@@ -3,12 +3,14 @@ repos:
     rev: v6.0.0
     hooks:
       - id: trailing-whitespace
+        exclude: ^.*/assets/
       - id: end-of-file-fixer
       - id: check-merge-conflict
       - id: check-yaml
       - id: check-toml
       - id: check-json
       - id: check-added-large-files
+        exclude: ^.*/assets/
       - id: detect-private-key
       - id: debug-statements
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
