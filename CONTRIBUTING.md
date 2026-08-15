@@ -1,0 +1,99 @@
+# Contributing to truck-ev
+
+**Contributions are welcome!**
+
+Thank you for your time and interest in improving
+**truck-ev**!
+
+## Project resources
+
+* **Repository**: <https://github.com/smkent/truck-ev>
+  for submitting pull requests
+* **Issue tracker**: <https://github.com/smkent/truck-ev/issues>
+  for questions or bug reports
+
+## Development documentation
+
+### Prerequisites
+
+- [x] A [supported version][python-versions] of [**Python**][python]
+- [x] [**git** for verson control][git]
+- [x] [Astral's **uv** Python project manager][uv]: `pip install uv` or
+  [other supported method][uv-installation]
+- [x] [**Copier**][copier]: `uv tool install copier`
+- [x] [Poe the Poet][poethepoet] (recommended): `uv tool install poethepoet`
+
+    This provides `poe` without the `uv run` prefix,
+    e.g. `poe test` instead of `uv run poe test`
+
+[copier]: https://copier.readthedocs.io
+[git]: https://git-scm.com
+[poethepoet]: https://poethepoet.natn.io/
+[python-versions]: https://devguide.python.org/versions/
+[python]: https://python.org
+[uv-installation]: https://docs.astral.sh/uv/getting-started/installation/
+[uv]: https://docs.astral.sh/uv/
+
+### Project development workflow
+
+#### Cloning the repository
+
+```sh
+git clone https://github.com/smkent/truck-ev
+cd truck-ev
+```
+
+Run `poe setup` in new repository clones to enable git hooks:
+
+```sh
+poe setup  # Enables git hooks
+```
+
+#### Development tools
+
+* `poe lint`: Run formatters and static checks
+* `poe test`: Run tests
+
+The `lint` and `test` tasks can also be run as a single combined command with:
+
+```sh
+poe lt
+```
+
+### Test snapshots
+
+Some tests compare test results with saved snapshots. Test snapshots can be
+updated by running:
+
+```sh
+poe snapup
+```
+
+### Applying copier-python template updates
+
+Copier can update your project with template changes that have occurred since
+the project was created.
+
+To apply updates, simply run in your project directory:
+
+```sh
+copier update
+```
+
+This will repeat the setup prompts, in case any prompts have been added or
+changed.
+
+!!! tip
+    To change template-provided features in your project, simply change your
+    answers in the update prompts.
+
+To apply updates without being prompted (reusing all previous answers), run:
+
+```sh
+copier update -l
+```
+
+When [`copier update`][copier-update] is finished, view changes with
+`git status` and `git diff`. Resolve any conflicts, and then commit the result.
+
+[copier-update]: https://copier.readthedocs.io/en/stable/updating/
