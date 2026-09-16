@@ -53,7 +53,7 @@ provenance = "cosign"
 version = "9.18.2"
 backend = "pipx:copier"
 specifiers = ["latest"]
-uv = { path = ".mise/locks/pipx-copier/9.18.2", digest = "sha256:939108cf12db49106881829cdfa0db225941c2fc345d098c21a32f1f2e3a1411" }
+uv = { path = ".mise/locks/pipx-copier/9.18.2", digest = "sha256:18327cd3a64d347da11ca19c00a62f2272e74f9946912c977a80a9893ca83a3d" }
 
 [[tools.prek]]
 version = "0.5.3"
