@@ -315,7 +315,7 @@ class MountingPlate(BasePartObject):
         if not p.part:
             raise RuntimeError("Empty part")
         p.part.label = type(self).__name__
-        dest = Rot(rotation)  # ty: ignore[invalid-argument-type]
+        dest = Rot(rotation)
         super().__init__(part=p.part.moved(dest), align=align, mode=mode)
 
 
