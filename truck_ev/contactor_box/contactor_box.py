@@ -37,11 +37,11 @@ from build123d import (
     ShapeList,
     SortBy,
     Vector,
-    add,
     chamfer,
     extrude,
     fillet,
     import_step,
+    insert,
     offset,
     scale,
 )
@@ -132,7 +132,7 @@ class ManufacturerBox(Compound):
         with BuildPart() as p:
             for f in self.standoff_faces:
                 extrude(f.without_holes(), amount=-(self.standoff_z + 1))
-            add(self.body)
+            insert(self.body)
             extrude(
                 blank_face,
                 amount=(self.standoff_z - self.base_thickness),
@@ -164,7 +164,7 @@ class ContactorBox(Compound):
     def body(self) -> Part:
         mbox_body = self.mbox.body
         with BuildPart() as p_box_body:
-            add(mbox_body)
+            insert(mbox_body)
 
             # Cutouts for large wire connectors
             with (
@@ -269,10 +269,10 @@ class MountingPlate(BasePartObject):
                 if print_test:
                     with BuildSketch(mode=Mode.SUBTRACT) as sk_cutouts:
                         amount = 10
-                        add(copy(blank_face))
+                        insert(copy(blank_face))
                         bbox = mbox.bounding_box()
                         Rectangle(1, bbox.size.Y, mode=Mode.SUBTRACT)
-                        add(
+                        insert(
                             contactor_box.standoff_cutout_faces,
                             mode=Mode.SUBTRACT,
                         )
@@ -315,7 +315,7 @@ class MountingPlate(BasePartObject):
         if not p.part:
             raise RuntimeError("Empty part")
         p.part.label = type(self).__name__
-        dest = Rot(rotation)  # ty: ignore[invalid-argument-type]
+        dest = Rot(rotation)
         super().__init__(part=p.part.moved(dest), align=align, mode=mode)
 
 

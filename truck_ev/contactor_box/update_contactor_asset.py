@@ -13,10 +13,10 @@ from build123d import (
     Mode,
     Plane,
     Pos,
-    add,
     export_step,
     extrude,
     import_step,
+    insert,
 )
 
 
@@ -53,7 +53,7 @@ class UpdatedGigavacGV200Contactor(Compound):
         circle_d = 11.14
         circle_pos = Pos(0, (10.66 + line_thickness), 0)
         with BuildPart() as p:
-            add(solid)
+            insert(solid)
             base_pattern_faces = (
                 p.faces()
                 .filter_by(Plane.XY)
